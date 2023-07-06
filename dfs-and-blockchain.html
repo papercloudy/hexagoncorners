@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>去中心化数据存储怎样结合区块链 &ndash; Hexagon Corners</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script" rel="stylesheet">
+
+    <!-- Meta -->
+    <meta name="description" content="Hexagon Corners &ndash; 追求真理的道路并非总是一帆风顺，但理性与克制常常能帮你避开危险的岔路。">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Social -->
+    <meta property="article:author" content="Paper Cloudy" />
+    <meta property="article:section" content="Web3" />
+    <meta property="article:published_time" content="2022-11-08" />
+
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="去中心化数据存储怎样结合区块链"/>
+    <meta property="og:description" content="当我们在互联网上搜索IPFS的定义时，Wikipedia 给出的答案是：一种网络传输协议与 P2P 网络，用于在分布式文件系统中存储和共享数据。与预期不同的是，在对 IPFS 的描述中，我们没有看到与区块链或者 Web3 的直接关联，那么IPFS到底是如何结合区块链的呢？"/>
+    <meta property="og:site_name" content="Hexagon Corners" />
+    <meta property="og:url" content="./dfs-and-blockchain.html"/>
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="去中心化数据存储怎样结合区块链">
+    <meta name="twitter:description" content="当我们在互联网上搜索IPFS的定义时，Wikipedia 给出的答案是：一种网络传输协议与 P2P 网络，用于在分布式文件系统中存储和共享数据。与预期不同的是，在对 IPFS 的描述中，我们没有看到与区块链或者 Web3 的直接关联，那么IPFS到底是如何结合区块链的呢？">
+    <meta name="twitter:url" content="./dfs-and-blockchain.html">
+
+    <!-- Feed -->
+    <link rel="alternate" type="application/atom+xml" href="http://localhost:8000/feeds/all.atom.xml" title="Hexagon Corners Atom Feed" />
+    <link rel="alternate" type="application/rss+xml" href="http://localhost:8000/feeds/all.rss.xml" title="Hexagon Corners RSS Feed" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:regular,bold">
+    <link rel="stylesheet" type="text/css" href="./theme/css/w3.css">
+    <link rel="stylesheet" type="text/css" href="./theme/css/style.css">
+    <link rel="stylesheet" type="text/css" href="./theme/css/jqcloud.css">
+    <link rel="stylesheet" type="text/css" href="./theme/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="./theme/css/pygments-highlight-github.css">
+    <link rel="stylesheet" type="text/css" href="./static/custom.css">
+    <link rel="stylesheet" type="text/css" href="./static/article.css">
+
+    <!-- Icon -->
+    <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico">
+
+    <!-- JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="./theme/js/jqcloud.min.js"></script>
+  </head>
+
+  <body>
+    <div class="w3-row w3-card w3-white">
+      <header id="header">
+        <a href="./index.html" id="header-logo" title="Home">Hexagon Corners</a>
+        <nav id="header-menu">
+          <ul>
+              <li class="w3-bottombar w3-border-white w3-hover-border-green"><a href="./categories.html">Categories</a></li>
+              <li class="w3-bottombar w3-border-white w3-hover-border-green"><a href="./archive.html">Archive</a></li>
+          </ul>
+        </nav>
+      </header>
+    </div>
+
+
+
+    <br><br><br>
+
+    <article>
+      <header class="w3-container col-main">
+        <h1>去中心化数据存储怎样结合区块链</h1>
+        <div class="post-info">
+          <div class="w3-opacity w3-margin-right w3-margin-bottom" style="flex-grow: 1;">
+            <span><time datetime="2022-11-08T00:00:00+08:00">2022-11-08</time> in <a href="./category/web3.html" title="All articles in category Web3">Web3</a></span>
+          </div>
+        </div>
+      </header>
+
+      <br>
+
+      <div class="headerimage-article" style="margin-bottom: 2rem;">
+        <img src="./images/dfs-and-blockchain/cover.jpeg" style="width: 60rem; display: block; margin-left: auto; margin-right: auto;">
+      </div>
+
+      <div class="col-main w3-container">
+        <section id="content">
+          <p>当我们在互联网上搜索 IPFS (InterPlanetary File System) 的定义时，Wikipedia 给出的答案是：一种网络传输协议（底层使用 libp2p）与 P2P (Peer-to-Peer) 网络，用于在分布式文件系统中存储和共享数据（下文中多数情况下“数据”与“文件”指代相同）。与预期不同的是，在对 IPFS 的描述中，我们没有看到与区块链或者 Web3 的直接关联，反而是用户在网络中托管与访问数据的方式与古老的 BT (BitTorrent) 网络有几分相似。</p>
+<p><img alt="IPFS" src="./images/dfs-and-blockchain/IPFS.jpg"></p>
+<p>BT (BitTorrent) 也是一种用于 P2P 文件分享的网络传输协议，遵守 BT 协议的客户端软件（节点）可以借助于种子文件 (Torrent File) 在 BT 网络中下载数据。种子文件中记录了数据的描述信息以及追踪服务器的列表，在追踪服务器的协助下，所有共享同一个种子文件的节点组成了一个群组 (Swarm)，彼此分享数据。与传统的由服务器到客户端的下载方式相比，BT 网络通过群组内共享上传的方式，突破了单一节点上传的带宽限制，从而加快了下载速度，同时也避免了单一节点失效导致无法下载的风险。因而BT实际上构建了一个去中心化的文件共享网络。</p>
+<p><img alt="BT" src="./images/dfs-and-blockchain/BT.jpg"></p>
+<p>IPFS 与 BT 的思路相似，不过采用了另一种解决方案，所有节点自动组成一个唯一的群组，托管的数据将被分割存储，并生成数据对应的哈希值，称为内容身份 (CID)，相同的数据将共享同一个 CID，避免重复存储。数据与托管地址的对应关系由一张分布式哈希表 (Distributed Hash Table, DHT) 来维护，DHT 则由全部节点共享。通过这种方式，IPFS 也构建了一个去中心化的数据存储与共享的网络。与 BT 网络不同的是，自 2015 年推出以来，IPFS 没有广泛应用于分布式下载，而更多的是被当作去中心化应用 (Dapp) 的存储系统，比如 NFT 所对应的数字资产实际上就是被存储于 IPFS 网络中的。</p>
+<p><img alt="NFT" src="./images/dfs-and-blockchain/NFT.jpg"></p>
+<p>另一方面，IPFS 同样也面临着与 BT 类似的问题。节点托管数据是要消耗资源的，然而无论 BT 还是 IPFS，网络本身都缺乏激励机制，来奖励那些托管数据的节点，因而对于并不热门的数据来说，提供托管的节点很少甚至没有，这也就导致了数据的可获取性下降。比如在 BT 网络中，热门数据刚上线时，有大量的节点参与下载（同时也上传数据给其他节点），所以下载速度很快，然而当热度散去后，群组中的节点数下降，再下载数据就很困难了。在 IPFS 网络中，通过客户端软件可以设定哪些数据是被“固定”的，只要节点接入网络，这些被固定的数据就会被持续托管，而那些没有被固定的数据则有可能被不定期清除。所以 IPFS 并不是一个无限的存储空间，对于一个上传至网络中的数据，如果没有节点固定该数据，那么该数据就面临着永久性损失的风险。</p>
+<p>到目前为止，除了作为 Dapps 的存储系统以外，IPFS 并没有与 Web3 在本质上产生联系，而真正将 IPFS 与 Web3 关联起来的是 Filecoin 项目。IPFS 原本是由 Juan Benet 创造的，此后 Juan Benet 又成立了 Protocol Labs，Filecoin 项目正是由 Protocol Labs 发起并运营的，所以也可以说 Filecoin 与 IPFS 是一脉相承的。Filecoin 是一个基于区块链的电子支付系统，区块链的内生加密货币也叫做 filecoin，代码是 FIL。可以说，Filecoin 的目的就是为 IPFS 引入激励机制。</p>
+<p><img alt="Filecoin" src="./images/dfs-and-blockchain/Filecoin.jpg"></p>
+<p>Filecoin 使用的协议是与 IPFS 兼容的，实际上所有的 Filecoin 节点底层上都是 IPFS 节点，所以也能够连接到其他 IPFS 节点并获取数据，但是 Filecoin 节点是不参与 IPFS 的分布式哈希表 (DHT) 的，也就是说，反过来 IPFS 节点是不能从 Filecoin 节点获取数据的。Filecoin 创造了一个分布式的存储空间市场，拥有大量空闲存储空间的节点可以在市场上出租自己的存储能力并收取租金。而希望长期存储数据的用户则可以在市场中购买存储空间。交易在区块链上完成，以 FIL 支付结算，通过智能合约对存储数据的完整性进行验证，惩罚不能完成存储合约的节点。这样就形成了一个完整的去中心化数据存储系统。</p>
+<p>可以看到，在 Filecoin 网络中，IPFS 负责实现去中心化存储，区块链则用来提供交易和激励机制。去中心化与区块链是不同的模块，也就是说，区块链的机制是去中心化的，但并不是所有的去中心化都要用到区块链，将去中心化与区块链划等号的理解是不到位的。</p>
+<p><img alt="DDS" src="./images/dfs-and-blockchain/DDS.jpg"></p>
+<p>接下来，在互联网上搜索去中心化数据存储系统，我们会发现还有许多类似的项目，其中一个比较有趣的是 Storj。Storj 的底层思路与 Filecoin 十分相似，参与网络的节点既可以出租空闲存储空间，也可以购买存储服务。Storj 同样发行了自己的代币（基于 ERC-20）用于交易。我们将 Storj 与 Filecoin 的对比汇总于下表。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Filecoin</th>
+<th>Storj</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Storage Type</strong></td>
+<td>Decentralized</td>
+<td>Decentralized</td>
+</tr>
+<tr>
+<td><strong>Client</strong></td>
+<td>Lotus (open-sourced)</td>
+<td>Uplink (open-sourced)</td>
+</tr>
+<tr>
+<td><strong>Protocol</strong></td>
+<td>IPFS</td>
+<td>Storj Protocol</td>
+</tr>
+<tr>
+<td><strong>Blockchain</strong></td>
+<td>Native</td>
+<td>ERC-20</td>
+</tr>
+<tr>
+<td><strong>Cryptocurrency</strong></td>
+<td>FIL</td>
+<td>STORJ</td>
+</tr>
+<tr>
+<td><strong>Market Cap</strong></td>
+<td>$1.67B</td>
+<td>$0.18B</td>
+</tr>
+<tr>
+<td><strong>Total Supply</strong></td>
+<td>1.97B</td>
+<td>425M</td>
+</tr>
+<tr>
+<td><strong>Market Type</strong></td>
+<td>Free Market</td>
+<td>Market Maker</td>
+</tr>
+</tbody>
+</table>
+<p>Storj 与 Filecoin 最大的不同在于组织市场的形式。Filecoin 依托于区块链建立了一个双边多向的自由交易市场，所有节点都可以与其他节点进行交易，而 Storj 则选择了承担做市商的角色，所有的买家和所有的卖家都只能与 Storj 进行交易。</p>
+<p>尽管 Storj 也引入了区块链和代币作为交易媒介，但却选择了一种中心化的商业模型。在这个模型中，买家需要支付一定的价钱向 Storj 购买存储空间，Storj 再将买家的数据分布式存储于卖家的节点上，再根据占用卖家资源的情况支付报酬。可以看到，区块链技术在 Storj 的商业模式中所起到的作用其实并不显著，或者说，即使去掉区块链模块，全部换成法币结算，Storj 也能顺利运营，甚至更为流畅。实际上也的确如此，如果要购买存储空间，Storj 是同时接受 STORJ 和法币的，可以想见的是，大多数用户还是倾向于使用法币支付的，甚至 Storj 的官方定价也是以美元标价的。另外一个去中心化数据存储项目 Sia 曾经表示过，每 TB 存储空间的价格大约为每月 2 美元（实际支付是由代币 Siacoin 完成的，但剔除代币价格波动后，最终反映的依然是较为稳定的法币价格）。</p>
+<p>姑且不论是否使用区块链技术，同样作为分布式数据存储系统，Filecoin 与 Storj 实际上是选择了去中心化与中心化两种完全不同的商业模式。两种商业模式本身并没有绝对的优劣之分，两者各有优势与劣势，取舍之间仍然是成本与收益的分析框架。Filecoin 的去中心化模式避免了网络中的单点风险，即使 Protocol Labs 经营不善倒闭了，在开源社区的维护之下，Filecoin 网络依然可以照常运行，而这是中心化的 Storj 做不到的。去中心化的主要好处之一是可以快速建立起信任链条，或者说建立起无信任基础的交易关系，这在项目的快速推广方面也有显著的优势，比如在 Filecoin 与 Storj 之间进行选择时，重要的数据还是存储在 Filecoin 会使人更为安心。但从运营与交易的成本来讲，Storj 更有优势，Filecoin 使用的是自建的区块链，维护成本较高，即使使用的是以太坊区块链，交易双方匹配时所需的时间和搜寻成本也难以避免，而且容易导致服务的价格出现较大的波动。Storj 的中心化模式省略了交易匹配的过程，提供服务时价格固定，甚至还有免费空间的额度，用户的使用体验会更好。所以整体而言，两种模式更多是互补共存的状态，并不是要完全取代对方的竞争。</p>
+<p><img alt="Innovation" src="./images/dfs-and-blockchain/Innovation.jpg"></p>
+<p>另一方面，加密货币也可以看成是一种金融创新。就如同股票是企业盈余分配权的代理一样，代币也可以作为交易规模 (GMV) 的代理。在 Filecoin 和 Storj 的例子中，由于存储服务的交易都是通过代币来实现的（暂时忽略 Storj 接受法币的情况），所以一定时间内市场的交易额就对应着应用的总需求，这种对应关系就像股票对应着企业的净资产一样。如果说股票的基本面（内在价值）由企业净资产（及其预期）决定，那么 FIL 和 STORJ 的基本面就由各自应用的总需求（交易额）决定，上文提到的 Siacoin 的例子也可以说明这一点。加密货币总市值的大小，往往也对应了应用市场的大小，比如 FIL 的市值远大于 STORJ，整体上可以认为 Filecoin 在应用市场中的份额也远大于 Storj。此外，股票的价格除了受到基本面的影响之外，本身供给数量和流动性的变化也会起到显著的作用，在这一点上，加密货币与权益类资产确实有相似之处。而加密货币的优势在于，只需短短几行代码，以很低的成本，就可以把企业价值在不同层面上进行代币化（证券化），这其中所酝酿的机会，在未来足以创造一个规模庞大的创新金融工具市场。</p>
+<p><img alt="CvD" src="./images/dfs-and-blockchain/CvD.jpg"></p>
+<p>重新说回到 Storj 的例子。上文提到，数据存储的去中心化实现并不依赖于区块链技术，而 Filecoin 使用区块链是为了引入激励机制。到了 Storj 这边，中心化的运作模式已经拥有了激励机制的必要因素，使用区块链技术或许醉翁之意不在酒。实际上，为了实现激励机制，也并非一定要使用区块链。</p>
+<p>不妨设想，某互联网大厂推出了这样一款产品，叫做“激励宝”，专门为各种商业服务增加激励机制。用户可以用法币一比一兑换应用内的虚拟货币“激励币”，“激励宝”则提供用户之间的交易和结算服务。比如，传统的 BT 网络想要引入激励机制，则可以在客户端内嵌入“激励宝”的组件，用户可以通过“激励币”来激励更多的节点托管文件或者延长托管时间。从效果上来看，这样就实现了一个与 Filecoin 功能相同的应用，只不过采用了中心化的激励机制。可惜的是，在区块链技术流行之前，现实世界并没有出现这样的产品，否则区块链就又多了一个竞争的对手，或者被颠覆的对象。</p>
+<p><img alt="BTFS" src="./images/dfs-and-blockchain/BTFS.jpg"></p>
+<p>顺便一说的是，现在的 BT 网络确实也有了新的发展。BitTorrent 协议是由 Bram Cohen 于 2001 年创立的，此后 Bram Cohen 又设立了 BitTorrent 公司（现已更名为 Rainberry 公司）来维护协议并且开发客户端。2018 年，Bram Cohen 将 Rainberry 出售给孙宇晨的波场基金会 (TRON Foundation) 并离开公司。自此 BitTorrent 也开启了 Web3 的转型，发行了 BitTorrent 网络的代币，代码 BTT，推出了 BitTorrent Speed 机制，思路上与“激励宝”一样，通过 BTT 来激励更多的节点做种，加快下载速度。另外还有 BitTorrent File System (BTFS)，相比于强调文件共享和下载的 BitTorrent Speed，BTFS 更加强调去中心化的数据存储，与 Filecoin 形成了直接的竞争。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Filecoin</th>
+<th>Storj</th>
+<th>BitTorrent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Client</strong></td>
+<td>Lotus</td>
+<td>Uplink</td>
+<td>BitTorrent Classic</td>
+</tr>
+<tr>
+<td><strong>Protocol</strong></td>
+<td>IPFS</td>
+<td>Storj Protocol</td>
+<td>BTFS</td>
+</tr>
+<tr>
+<td><strong>Blockchain</strong></td>
+<td>Native</td>
+<td>ERC-20</td>
+<td>ERC-20</td>
+</tr>
+<tr>
+<td><strong>Cryptocurrency</strong></td>
+<td>FIL</td>
+<td>STORJ</td>
+<td>BTT</td>
+</tr>
+<tr>
+<td><strong>Market Cap</strong></td>
+<td>$1.67B</td>
+<td>$0.18B</td>
+<td>$0.78B</td>
+</tr>
+<tr>
+<td><strong>Total Supply</strong></td>
+<td>1.97B</td>
+<td>425M</td>
+<td>990B</td>
+</tr>
+<tr>
+<td><strong>Market Type</strong></td>
+<td>Free Market</td>
+<td>Market Maker</td>
+<td>TBC</td>
+</tr>
+</tbody>
+</table>
+<p>总结一下，我们以去中心化数据存储为例，双向打破了两个区块链等式。首先，去中心化的概念早于区块链，并非所有的去中心化应用都涉及到区块链；另一方面，一个项目引入区块链技术，也可以不是为了实现去中心化的功能；去中心化市场需要代币来实现，引入代币却不一定是为了实现去中心化市场。另外，激励机制的实现可以不使用区块链，区块链的引入也不必一定实现激励机制。</p>
+<p>区块链技术与加密货币不仅仅是为 Web3 服务的，传统服务的价值也可以通过代币来体现。代币的价值就是底层应用价值的代理，而底层应用可以是去中心化的，也可以是中心化的。另一方面，一个应用的区块链含量可大可小，可以小到仅仅用来实现价值的代理，也可以大到实现全局的去中心化和激励机制。</p>
+<p>当我们分析一个加密货币项目时，也应该区分项目背后所对应的应用场景，也即加密货币的“基本面”。如果刚巧属于传统应用，我们甚至能够完全套用现有的分析方法；如果遇到的是 Web3 应用，尽管当前我们的理解还比较有限，不过随着人们对 Web3 研究的不断加深，一定也会涌现出更多更好的分析方法。<span style="color: red;">&#8718;</span></p>
+        </section>
+
+        <br><br><br>
+
+        <footer>
+          <div class="adjust-width">
+            <div id="author-block" class="w3-light-grey w3-border">
+              <div id="author-info">
+                <a href="https://www.google.com"><img style="width: 60px; height: 60px;" src="images/avatar.gif" onerror="this.src='theme/images/avatar.png'" alt="Avatar"></a>
+                <div style="margin-left: 20px; margin-top: 15px;">
+                  <a href="https://www.google.com"><span id="author-name" class="w3-hover-text-dark-grey">Paper Cloudy</span></a>
+                  <p id="author-story">Hi! I’m Paper Cloudy – a financial analyst and amateur developer living in Hong Kong. Even though most of my career development is about financial analysis and investment in the last decade, I am always fascinated by all the changes that are happening around us, and always curious about areas of life that I don’t yet understand. I’m especially passionate about all kinds of stories, economics, investment theories, probability interpretations, software development and all those exciting technologies.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <br><br><br>
+
+          <p style="font-size:10pt; font-style: italic;">Did you like this article? Share it with your friends!</p>
+          <div id="share" class="share">
+            <a href="http://www.facebook.com/sharer.php?u=./dfs-and-blockchain.html&amp;t=Hexagon%20Corners%3A%20%E5%8E%BB%E4%B8%AD%E5%BF%83%E5%8C%96%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E6%80%8E%E6%A0%B7%E7%BB%93%E5%90%88%E5%8C%BA%E5%9D%97%E9%93%BE" target="_blank" class="w3-btn w3-indigo">
+              <i class="fa fa-facebook"></i> <span>Facebook</span>
+            </a>
+            <a href="http://twitter.com/share?url=./dfs-and-blockchain.html&amp;text=Hexagon%20Corners%3A%20%E5%8E%BB%E4%B8%AD%E5%BF%83%E5%8C%96%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E6%80%8E%E6%A0%B7%E7%BB%93%E5%90%88%E5%8C%BA%E5%9D%97%E9%93%BE" target="_blank" class="w3-btn w3-blue">
+              <i class="fa fa-twitter"></i> <span>Twitter</span>
+            </a>
+            <!-- <a href="https://plus.google.com/share?url=./dfs-and-blockchain.html" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;" class="w3-btn w3-red">
+              <i class="fa fa-google-plus"></i> <span>Google</span>
+            </a> -->
+          </div>
+
+          <br><br><br>
+
+
+
+        </footer>
+      </div>
+    </article>
+
+
+    <footer id="footer">
+      <div id="footer-copyright" class="w3-center w3-small w3-text-grey w3-padding-48">
+        <span>&copy; 2023-2023 Paper Cloudy | <a href="http://localhost:8000/feeds/all.atom.xml">Atom feed <i class="fa fa-rss" aria-hidden="true"></i></a> | <a href="http://localhost:8000/feeds/all.rss.xml">RSS feed <i class="fa fa-rss" aria-hidden="true"></i></a></span>
+      </div>
+    </footer>
+
+
+
+  </body>
+</html>
