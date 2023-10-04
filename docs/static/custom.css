@@ -1,6 +1,8 @@
 #header-logo {
-  width: 200px;
+  width: 110px;
   height: 60px;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -15,6 +17,13 @@
 .structure_symbol {
   font-family: 'Dancing Script';
   font-weight: bold;
+  color: coral;
+  word-spacing: 1em;
+}
+
+.structure_symbol_cn {
+  font-family: 'Zhi Mang Xing';
+  font-size: 1.5em;
   color: coral;
   word-spacing: 1em;
 }
